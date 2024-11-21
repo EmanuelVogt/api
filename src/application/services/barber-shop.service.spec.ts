@@ -1,30 +1,30 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { BarberShopService } from './barber-shop.service';
+import { BarbershopService } from './barber-shop.service';
 import { BarberShop } from '../../domain/entities/barber-shop.entity';
 import { NotFoundException } from '@nestjs/common';
 import { CreateBarberShopDto } from '../dtos/create-barber-shop.dto';
 import { UpdateBarberShopDto } from '../dtos/update-barber-shop.dto';
 import { mockBarberShopRepository } from '../../domain/repositories/mocks/barber-shop.repository.interface.mock';
 import { IBarberShopRepository } from '../../domain/repositories/i-barber-shop.repository';
-import { BarberShopRepositoryToken } from '../../domain/repositories/barber-shop.repository.token';
+import { BarbershopRepositoryToken } from '../../domain/repositories/barber-shop.repository.token';
 
-describe('BarberShopService', () => {
-  let service: BarberShopService;
+describe('BarbershopService', () => {
+  let service: BarbershopService;
   let repository: IBarberShopRepository;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        BarberShopService,
+        BarbershopService,
         {
-          provide: BarberShopRepositoryToken,
+          provide: BarbershopRepositoryToken,
           useValue: mockBarberShopRepository,
         },
       ],
     }).compile();
 
-    service = module.get<BarberShopService>(BarberShopService);
-    repository = module.get<IBarberShopRepository>(BarberShopRepositoryToken);
+    service = module.get<BarbershopService>(BarbershopService);
+    repository = module.get<IBarberShopRepository>(BarbershopRepositoryToken);
   });
 
   it('should be defined', () => {

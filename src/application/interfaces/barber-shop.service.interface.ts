@@ -1,5 +1,3 @@
-// src/application/interfaces/barber-shop.service.interface.ts
-
 import { BarberShop } from '../../domain/entities/barber-shop.entity';
 import { CreateBarberShopDto } from '../dtos/create-barber-shop.dto';
 import { UpdateBarberShopDto } from '../dtos/update-barber-shop.dto';

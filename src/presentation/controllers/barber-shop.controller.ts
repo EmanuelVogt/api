@@ -9,16 +9,16 @@ import {
   ParseIntPipe,
   Inject,
 } from '@nestjs/common';
-import { BarberShopServiceToken } from '../../application/interfaces/barber-shop.service.token';
+import { BarbershopServiceToken } from '../../application/interfaces/barber-shop.service.token';
 import { IBarberShopService } from '../../application/interfaces/barber-shop.service.interface';
 import { BarberShop } from '../../domain/entities/barber-shop.entity';
 import { CreateBarberShopDto } from '../../application/dtos/create-barber-shop.dto';
 import { UpdateBarberShopDto } from '../../application/dtos/update-barber-shop.dto';
 
 @Controller('barber-shops')
-export class BarberShopController {
+export class BarbershopController {
   constructor(
-    @Inject(BarberShopServiceToken)
+    @Inject(BarbershopServiceToken)
     private readonly barberShopService: IBarberShopService,
   ) {}
 

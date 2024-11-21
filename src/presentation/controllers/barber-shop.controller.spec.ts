@@ -1,8 +1,6 @@
-// src/presentation/controllers/barber-shop.controller.spec.ts
-
 import { Test, TestingModule } from '@nestjs/testing';
-import { BarberShopController } from './barber-shop.controller';
-import { BarberShopServiceToken } from '../../application/interfaces/barber-shop.service.token';
+import { BarbershopController } from './barber-shop.controller';
+import { BarbershopServiceToken } from '../../application/interfaces/barber-shop.service.token';
 import { IBarberShopService } from '../../application/interfaces/barber-shop.service.interface';
 import { CreateBarberShopDto } from '../../application/dtos/create-barber-shop.dto';
 import { UpdateBarberShopDto } from '../../application/dtos/update-barber-shop.dto';
@@ -10,28 +8,28 @@ import { BarberShop } from '../../domain/entities/barber-shop.entity';
 import { mockBarberShopService } from '../../application/services/mock/barber-shop.service.mock';
 
 describe('BarberShopController', () => {
-  let controller: BarberShopController;
+  let controller: BarbershopController;
   let service: jest.Mocked<IBarberShopService>;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [BarberShopController],
+      controllers: [BarbershopController],
       providers: [
         {
-          provide: BarberShopServiceToken,
-          useValue: mockBarberShopService, // Injetando o mock
+          provide: BarbershopServiceToken,
+          useValue: mockBarberShopService,
         },
       ],
     }).compile();
 
-    controller = module.get<BarberShopController>(BarberShopController);
+    controller = module.get<BarbershopController>(BarbershopController);
     service = module.get<jest.Mocked<IBarberShopService>>(
-      BarberShopServiceToken,
+      BarbershopServiceToken,
     );
   });
 
   afterEach(() => {
-    jest.clearAllMocks(); // Limpa os mocks após cada teste
+    jest.clearAllMocks();
   });
 
   it('should be defined', () => {
@@ -48,15 +46,12 @@ describe('BarberShopController', () => {
         new Date(),
       );
 
-      // Configura o mock para retornar o resultado esperado
       service.createBarberShop.mockResolvedValue(mockResult);
 
       const result = await controller.createBarberShop(dto);
 
-      // Verifica se o método do serviço foi chamado com os argumentos corretos
       expect(service.createBarberShop).toHaveBeenCalledWith(dto);
 
-      // Verifica se o resultado está correto
       expect(result).toHaveProperty('id');
       expect(result.name).toBe(dto.name);
     });

@@ -1,1 +1,1 @@
-export class BarberShopServiceToken {}
+export const BarbershopServiceToken = Symbol('BarbershopService');

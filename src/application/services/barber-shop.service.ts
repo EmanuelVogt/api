@@ -3,13 +3,13 @@ import { BarberShop } from '../../domain/entities/barber-shop.entity';
 import { CreateBarberShopDto } from '../dtos/create-barber-shop.dto';
 import { UpdateBarberShopDto } from '../dtos/update-barber-shop.dto';
 import { IBarberShopService } from '../interfaces/barber-shop.service.interface';
-import { BarberShopRepositoryToken } from '../../domain/repositories/barber-shop.repository.token';
+import { BarbershopRepositoryToken } from '../../domain/repositories/barber-shop.repository.token';
 import { IBarberShopRepository } from '../../domain/repositories/i-barber-shop.repository';
 
 @Injectable()
-export class BarberShopService implements IBarberShopService {
+export class BarbershopService implements IBarberShopService {
   constructor(
-    @Inject(BarberShopRepositoryToken)
+    @Inject(BarbershopRepositoryToken)
     private readonly barberShopRepository: IBarberShopRepository,
   ) {}
 
@@ -17,7 +17,7 @@ export class BarberShopService implements IBarberShopService {
     createBarberShopDto: CreateBarberShopDto,
   ): Promise<BarberShop> {
     const barberShop = new BarberShop(
-      0, // ID será gerado pelo banco
+      0,
       createBarberShopDto.name,
       new Date(),
       new Date(),
